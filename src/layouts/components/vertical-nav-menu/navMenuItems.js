@@ -85,7 +85,7 @@ export default [
      
       {
         url: null,
-        name: 'Batiment',
+        name: 'RH',
         icon: 'LayoutIcon',
         i18n: 'RH',
         submenu: [
@@ -135,6 +135,20 @@ export default [
             i18n: 'Matiere'
           }
         ]
+      },
+      {
+        url: '/samaecole/Gestion/Absences/absence',
+        name: 'Absences absences',
+        slug: 'Absences',
+        icon: '',
+        i18n: 'Absences'
+      },
+      {
+        url: '/samaecole/Gestion/Retards/Retard',
+        name: 'Retard retard',
+        slug: 'retard',
+        icon: '',
+        i18n: 'Retards'
       }
     ]
   },

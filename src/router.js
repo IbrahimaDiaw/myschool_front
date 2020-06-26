@@ -287,6 +287,34 @@ const router = new Router({
             rule: 'editor'
           }
         },
+        {
+          path: '/samaecole/Gestion/Retards/retard',
+          name: 'grid-tailwind',
+          component: () => import('@/views/samaecole/Gestion/Retards/retard.vue'),
+          meta: {
+            breadcrumb: [
+              { title: 'Home', url: '/' },
+              { title: 'retard'},
+              { title: 'Retard', active: true }
+            ],
+            pageTitle: 'Retard',
+            rule: 'editor'
+          }
+        },
+        {
+          path: '/samaecole/Gestion/Absences/absence',
+          name: 'grid-tailwind',
+          component: () => import('@/views/samaecole/Gestion/Absences/absence.vue'),
+          meta: {
+            breadcrumb: [
+              { title: 'Home', url: '/' },
+              { title: 'absence'},
+              { title: 'Absence', active: true }
+            ],
+            pageTitle: 'Absence',
+            rule: 'editor'
+          }
+        },
 
         // =============================================================================
         // COMPONENT ROUTES
