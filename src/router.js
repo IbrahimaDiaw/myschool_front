@@ -116,6 +116,77 @@ const router = new Router({
           }
         },
         {
+          path: '/apps/eCommerce/shop',
+          name: 'ecommerce-shop',
+          component: () => import('./views/apps/eCommerce/ECommerceShop.vue'),
+          meta: {
+            breadcrumb: [
+              { title: 'Home', url: '/' },
+              { title: 'eCommerce'},
+              { title: 'Shop', active: true }
+            ],
+            pageTitle: 'Shop',
+            rule: 'editor'
+          }
+        },
+        {
+          path: '/apps/eCommerce/wish-list',
+          name: 'ecommerce-wish-list',
+          component: () => import('./views/apps/eCommerce/ECommerceWishList.vue'),
+          meta: {
+            breadcrumb: [
+              { title: 'Home', url: '/' },
+              { title: 'eCommerce', url:'/apps/eCommerce/shop'},
+              { title: 'Wish List', active: true }
+            ],
+            pageTitle: 'Wish List',
+            rule: 'editor'
+          }
+        },
+        {
+          path: '/apps/eCommerce/checkout',
+          name: 'ecommerce-checkout',
+          component: () => import('./views/apps/eCommerce/ECommerceCheckout.vue'),
+          meta: {
+            breadcrumb: [
+              { title: 'Home', url: '/' },
+              { title: 'eCommerce', url:'/apps/eCommerce/shop'},
+              { title: 'Checkout', active: true }
+            ],
+            pageTitle: 'Checkout',
+            rule: 'editor'
+          }
+        },
+        /*
+                  Below route is for demo purpose
+                  You can use this route in your app
+                    {
+                        path: '/apps/eCommerce/item/',
+                        name: 'ecommerce-item-detail-view',
+                        redirect: '/apps/eCommerce/shop',
+                    }
+                */
+        {
+          path: '/apps/eCommerce/item/',
+          redirect: '/apps/eCommerce/item/5546604'
+        },
+        {
+          path: '/apps/eCommerce/item/:item_id',
+          name: 'ecommerce-item-detail-view',
+          component: () => import('./views/apps/eCommerce/ECommerceItemDetailView.vue'),
+          meta: {
+            breadcrumb: [
+              { title: 'Home', url: '/' },
+              { title: 'eCommerce'},
+              { title: 'Shop', url: {name: 'ecommerce-shop'} },
+              { title: 'Item Details', active: true }
+            ],
+            parent: 'ecommerce-item-detail-view',
+            pageTitle: 'Item Details',
+            rule: 'editor'
+          }
+        },
+        {
           path: '/apps/user/user-list',
           name: 'app-user-list',
           component: () => import('@/views/apps/user/user-list/UserList.vue'),
@@ -157,161 +228,332 @@ const router = new Router({
             rule: 'editor'
           }
         },
-
-        /* 
+         /* 
           SAMA ECOLE
         */
+       {
+        path: '/samaecole/RH/eleves/eleve',
+        name: 'eleve',
+        component: () => import('@/views/samaecole/RH/eleves/eleve.vue'),
+        meta: {
+          breadcrumb: [
+            { title: 'Home', url: '/' },
+            { title: 'Gestion Eleve'},
+            { title: 'Eleves', active: true }
+          ],
+          pageTitle: 'Les eleves',
+          rule: 'editor'
+        }
+      },
+      {
+        path: '/samaecole/RH/Enseignants/enseignant',
+        name: 'grid-tailwind',
+        component: () => import('@/views/samaecole/RH/Enseignants/enseignant.vue'),
+        meta: {
+          breadcrumb: [
+            { title: 'Home', url: '/' },
+            { title: 'Enseignant'},
+            { title: 'Enseignant', active: true }
+          ],
+          pageTitle: 'Enseignants',
+          rule: 'editor'
+        }
+      },
+      {
+        path: '/samaecole/RH/Parents/parent',
+        name: 'grid-tailwind',
+        component: () => import('@/views/samaecole/RH/Parents/parent.vue'),
+        meta: {
+          breadcrumb: [
+            { title: 'Home', url: '/' },
+            { title: 'Parent'},
+            { title: 'parent', active: true }
+          ],
+          pageTitle: 'Parent d\'eleve',
+          rule: 'editor'
+        }
+      },
+      {
+        path: '/samaecole/Gestion/classes/classe',
+        name: 'grid-tailwind',
+        component: () => import('@/views/samaecole/Gestion/classes/classe.vue'),
+        meta: {
+          breadcrumb: [
+            { title: 'Home', url: '/' },
+            { title: 'Classe'},
+            { title: 'Classe', active: true }
+          ],
+          pageTitle: 'Classe',
+          rule: 'editor'
+        }
+      },
+      {
+        path: '/samaecole/Gestion/niveaux/niveau',
+        name: 'grid-tailwind',
+        component: () => import('@/views/samaecole/Gestion/niveaux/niveau.vue'),
+        meta: {
+          breadcrumb: [
+            { title: 'Home', url: '/' },
+            { title: 'Niveau'},
+            { title: 'Niveau', active: true }
+          ],
+          pageTitle: 'Niveau',
+          rule: 'editor'
+        }
+      },
+      {
+        path: '/samaecole/Gestion/AnneeScolaire/anneescolaire',
+        name: 'grid-tailwind',
+        component: () => import('@/views/samaecole/Gestion/AnneeScolaire/anneescolaire.vue'),
+        meta: {
+          breadcrumb: [
+            { title: 'Home', url: '/' },
+            { title: 'Annee Scolaire'},
+            { title: 'Annee Scolaire', active: true }
+          ],
+          pageTitle: 'Annee Scolaire',
+          rule: 'editor'
+        }
+      },
+      {
+        path: '/samaecole/Gestion/EmploiDuTemps/emploi_du_temps',
+        name: 'grid-tailwind',
+        component: () => import('@/views/samaecole/Gestion/EmploiDuTemps/emploi_du_temps.vue'),
+        meta: {
+          breadcrumb: [
+            { title: 'Home', url: '/' },
+            { title: 'emploi-du-temps'},
+            { title: 'Emploi du temps', active: true }
+          ],
+          pageTitle: 'Emploi du temps',
+          rule: 'editor'
+        }
+      },
+      {
+        path: '/samaecole/Gestion/Evaluations/evaluation',
+        name: 'grid-tailwind',
+        component: () => import('@/views/samaecole/Gestion/Evaluations/evaluation.vue'),
+        meta: {
+          breadcrumb: [
+            { title: 'Home', url: '/' },
+            { title: 'evaluation'},
+            { title: 'Evaluation', active: true }
+          ],
+          pageTitle: 'Evaluation',
+          rule: 'editor'
+        }
+      },
+      {
+        path: '/samaecole/Gestion/Matieres/matiere',
+        name: 'grid-tailwind',
+        component: () => import('@/views/samaecole/Gestion/Matieres/matiere.vue'),
+        meta: {
+          breadcrumb: [
+            { title: 'Home', url: '/' },
+            { title: 'matiere'},
+            { title: 'Matiere', active: true }
+          ],
+          pageTitle: 'Matiere',
+          rule: 'editor'
+        }
+      },
+      {
+        path: '/samaecole/Gestion/Retards/retard',
+        name: 'grid-tailwind',
+        component: () => import('@/views/samaecole/Gestion/Retards/retard.vue'),
+        meta: {
+          breadcrumb: [
+            { title: 'Home', url: '/' },
+            { title: 'retard'},
+            { title: 'Retard', active: true }
+          ],
+          pageTitle: 'Retard',
+          rule: 'editor'
+        }
+      },
+      {
+        path: '/samaecole/Gestion/Absences/absence',
+        name: 'grid-tailwind',
+        component: () => import('@/views/samaecole/Gestion/Absences/absence.vue'),
+        meta: {
+          breadcrumb: [
+            { title: 'Home', url: '/' },
+            { title: 'absence'},
+            { title: 'Absence', active: true }
+          ],
+          pageTitle: 'Absence',
+          rule: 'editor'
+        }
+      },
+
+      /*
+      * AND SAMA ECOL
+      */
+        // =============================================================================
+        // UI ELEMENTS
+        // =============================================================================
         {
-          path: '/samaecole/RH/eleves/eleve',
-          name: 'eleve',
-          component: () => import('@/views/samaecole/RH/eleves/eleve.vue'),
+          path: '/ui-elements/data-list/list-view',
+          name: 'data-list-list-view',
+          component: () => import('@/views/ui-elements/data-list/list-view/DataListListView.vue'),
           meta: {
             breadcrumb: [
               { title: 'Home', url: '/' },
-              { title: 'Gestion Eleve'},
-              { title: 'Eleves', active: true }
+              { title: 'Data List'},
+              { title: 'List View', active: true }
             ],
-            pageTitle: 'Les eleves',
+            pageTitle: 'List View',
             rule: 'editor'
           }
         },
         {
-          path: '/samaecole/RH/Enseignants/enseignant',
-          name: 'grid-tailwind',
-          component: () => import('@/views/samaecole/RH/Enseignants/enseignant.vue'),
+          path: '/ui-elements/data-list/thumb-view',
+          name: 'data-list-thumb-view',
+          component: () => import('@/views/ui-elements/data-list/thumb-view/DataListThumbView.vue'),
           meta: {
             breadcrumb: [
               { title: 'Home', url: '/' },
-              { title: 'Enseignant'},
-              { title: 'Enseignant', active: true }
+              { title: 'Data List'},
+              { title: 'Thumb View', active: true }
             ],
-            pageTitle: 'Enseignants',
+            pageTitle: 'Thumb View',
             rule: 'editor'
           }
         },
         {
-          path: '/samaecole/RH/Parents/parent',
-          name: 'grid-tailwind',
-          component: () => import('@/views/samaecole/RH/Parents/parent.vue'),
+          path: '/ui-elements/grid/vuesax',
+          name: 'grid-vuesax',
+          component: () => import('@/views/ui-elements/grid/vuesax/GridVuesax.vue'),
           meta: {
             breadcrumb: [
               { title: 'Home', url: '/' },
-              { title: 'Parent'},
-              { title: 'parent', active: true }
+              { title: 'Grid'},
+              { title: 'Vuesax', active: true }
             ],
-            pageTitle: 'Parent d\'eleve',
+            pageTitle: 'Grid',
             rule: 'editor'
           }
         },
         {
-          path: '/samaecole/Gestion/classes/classe',
+          path: '/ui-elements/grid/tailwind',
           name: 'grid-tailwind',
-          component: () => import('@/views/samaecole/Gestion/classes/classe.vue'),
+          component: () => import('@/views/ui-elements/grid/tailwind/GridTailwind.vue'),
           meta: {
             breadcrumb: [
               { title: 'Home', url: '/' },
-              { title: 'Classe'},
-              { title: 'Classe', active: true }
+              { title: 'Grid'},
+              { title: 'Tailwind', active: true }
             ],
-            pageTitle: 'Classe',
+            pageTitle: 'Tailwind Grid',
             rule: 'editor'
           }
         },
         {
-          path: '/samaecole/Gestion/niveaux/niveau',
-          name: 'grid-tailwind',
-          component: () => import('@/views/samaecole/Gestion/niveaux/niveau.vue'),
+          path: '/ui-elements/colors',
+          name: 'colors',
+          component: () => import('./views/ui-elements/colors/Colors.vue'),
           meta: {
             breadcrumb: [
               { title: 'Home', url: '/' },
-              { title: 'Niveau'},
-              { title: 'Niveau', active: true }
+              { title: 'Colors', active: true }
             ],
-            pageTitle: 'Niveau',
+            pageTitle: 'Colors',
             rule: 'editor'
           }
         },
         {
-          path: '/samaecole/Gestion/AnneeScolaire/anneescolaire',
-          name: 'grid-tailwind',
-          component: () => import('@/views/samaecole/Gestion/AnneeScolaire/anneescolaire.vue'),
+          path: '/ui-elements/card/basic',
+          name: 'basic-cards',
+          component: () => import('./views/ui-elements/card/CardBasic.vue'),
           meta: {
             breadcrumb: [
               { title: 'Home', url: '/' },
-              { title: 'Annee Scolaire'},
-              { title: 'Annee Scolaire', active: true }
+              { title: 'Card' },
+              { title: 'Basic Cards', active: true }
             ],
-            pageTitle: 'Annee Scolaire',
+            pageTitle: 'Basic Cards',
             rule: 'editor'
           }
         },
         {
-          path: '/samaecole/Gestion/EmploiDuTemps/emploi_du_temps',
-          name: 'grid-tailwind',
-          component: () => import('@/views/samaecole/Gestion/EmploiDuTemps/emploi_du_temps.vue'),
+          path: '/ui-elements/card/statistics',
+          name: 'statistics-cards',
+          component: () => import('./views/ui-elements/card/CardStatistics.vue'),
           meta: {
             breadcrumb: [
               { title: 'Home', url: '/' },
-              { title: 'emploi-du-temps'},
-              { title: 'Emploi du temps', active: true }
+              { title: 'Card' },
+              { title: 'Statistics Cards', active: true }
             ],
-            pageTitle: 'Emploi du temps',
+            pageTitle: 'Statistics Card',
             rule: 'editor'
           }
         },
         {
-          path: '/samaecole/Gestion/Evaluations/evaluation',
-          name: 'grid-tailwind',
-          component: () => import('@/views/samaecole/Gestion/Evaluations/evaluation.vue'),
+          path: '/ui-elements/card/analytics',
+          name: 'analytics-cards',
+          component: () => import('./views/ui-elements/card/CardAnalytics.vue'),
           meta: {
             breadcrumb: [
               { title: 'Home', url: '/' },
-              { title: 'evaluation'},
-              { title: 'Evaluation', active: true }
+              { title: 'Card' },
+              { title: 'Analytics Card', active: true }
             ],
-            pageTitle: 'Evaluation',
+            pageTitle: 'Analytics Card',
             rule: 'editor'
           }
         },
         {
-          path: '/samaecole/Gestion/Matieres/matiere',
-          name: 'grid-tailwind',
-          component: () => import('@/views/samaecole/Gestion/Matieres/matiere.vue'),
+          path: '/ui-elements/card/card-actions',
+          name: 'card-actions',
+          component: () => import('./views/ui-elements/card/CardActions.vue'),
           meta: {
             breadcrumb: [
               { title: 'Home', url: '/' },
-              { title: 'matiere'},
-              { title: 'Matiere', active: true }
+              { title: 'Card' },
+              { title: 'Card Actions', active: true }
             ],
-            pageTitle: 'Matiere',
+            pageTitle: 'Card Actions',
             rule: 'editor'
           }
         },
         {
-          path: '/samaecole/Gestion/Retards/retard',
-          name: 'grid-tailwind',
-          component: () => import('@/views/samaecole/Gestion/Retards/retard.vue'),
+          path: '/ui-elements/card/card-colors',
+          name: 'card-colors',
+          component: () => import('./views/ui-elements/card/CardColors.vue'),
           meta: {
             breadcrumb: [
               { title: 'Home', url: '/' },
-              { title: 'retard'},
-              { title: 'Retard', active: true }
+              { title: 'Card' },
+              { title: 'Card Colors', active: true }
             ],
-            pageTitle: 'Retard',
+            pageTitle: 'Card Colors',
             rule: 'editor'
           }
         },
         {
-          path: '/samaecole/Gestion/Absences/absence',
-          name: 'grid-tailwind',
-          component: () => import('@/views/samaecole/Gestion/Absences/absence.vue'),
+          path: '/ui-elements/table',
+          name: 'table',
+          component: () => import('./views/ui-elements/table/Table.vue'),
           meta: {
             breadcrumb: [
               { title: 'Home', url: '/' },
-              { title: 'absence'},
-              { title: 'Absence', active: true }
+              { title: 'Table', active: true }
             ],
-            pageTitle: 'Absence',
+            pageTitle: 'Table',
+            rule: 'editor'
+          }
+        },
+        {
+          path: '/ui-elements/ag-grid-table',
+          name: 'ag-grid-table',
+          component: () => import('./views/ui-elements/ag-grid-table/AgGridTable.vue'),
+          meta: {
+            breadcrumb: [
+              { title: 'Home', url: '/' },
+              { title: 'agGrid Table', active: true }
+            ],
+            pageTitle: 'agGrid Table',
             rule: 'editor'
           }
         },
@@ -628,6 +870,169 @@ const router = new Router({
           }
         },
 
+
+        // =============================================================================
+        // FORMS
+        // =============================================================================
+        // =============================================================================
+        // FORM ELEMENTS
+        // =============================================================================
+        {
+          path: '/forms/form-elements/select',
+          name: 'form-element-select',
+          component: () => import('./views/forms/form-elements/select/Select.vue'),
+          meta: {
+            breadcrumb: [
+              { title: 'Home', url: '/' },
+              { title: 'Form Elements' },
+              { title: 'Select', active: true }
+            ],
+            pageTitle: 'Select',
+            rule: 'editor'
+          }
+        },
+        {
+          path: '/forms/form-elements/switch',
+          name: 'form-element-switch',
+          component: () => import('./views/forms/form-elements/switch/Switch.vue'),
+          meta: {
+            breadcrumb: [
+              { title: 'Home', url: '/' },
+              { title: 'Form Elements' },
+              { title: 'Switch', active: true }
+            ],
+            pageTitle: 'Switch',
+            rule: 'editor'
+          }
+        },
+        {
+          path: '/forms/form-elements/checkbox',
+          name: 'form-element-checkbox',
+          component: () => import('./views/forms/form-elements/checkbox/Checkbox.vue'),
+          meta: {
+            breadcrumb: [
+              { title: 'Home', url: '/' },
+              { title: 'Form Elements' },
+              { title: 'Checkbox', active: true }
+            ],
+            pageTitle: 'Checkbox',
+            rule: 'editor'
+          }
+        },
+        {
+          path: '/forms/form-elements/radio',
+          name: 'form-element-radio',
+          component: () => import('./views/forms/form-elements/radio/Radio.vue'),
+          meta: {
+            breadcrumb: [
+              { title: 'Home', url: '/' },
+              { title: 'Form Elements' },
+              { title: 'Radio', active: true }
+            ],
+            pageTitle: 'Radio',
+            rule: 'editor'
+          }
+        },
+        {
+          path: '/forms/form-elements/input',
+          name: 'form-element-input',
+          component: () => import('./views/forms/form-elements/input/Input.vue'),
+          meta: {
+            breadcrumb: [
+              { title: 'Home', url: '/' },
+              { title: 'Form Elements' },
+              { title: 'Input', active: true }
+            ],
+            pageTitle: 'Input',
+            rule: 'editor'
+          }
+        },
+        {
+          path: '/forms/form-elements/number-input',
+          name: 'form-element-number-input',
+          component: () => import('./views/forms/form-elements/number-input/NumberInput.vue'),
+          meta: {
+            breadcrumb: [
+              { title: 'Home', url: '/' },
+              { title: 'Form Elements' },
+              { title: 'Number Input', active: true }
+            ],
+            pageTitle: 'Number Input',
+            rule: 'editor'
+          }
+        },
+        {
+          path: '/forms/form-elements/textarea',
+          name: 'form-element-textarea',
+          component: () => import('./views/forms/form-elements/textarea/Textarea.vue'),
+          meta: {
+            breadcrumb: [
+              { title: 'Home', url: '/' },
+              { title: 'Form Elements' },
+              { title: 'Textarea', active: true }
+            ],
+            pageTitle: 'Textarea',
+            rule: 'editor'
+          }
+        },
+        // -------------------------------------------------------------------------------------------------------------------------------------------
+        {
+          path: '/forms/form-layouts',
+          name: 'forms-form-layouts',
+          component: () => import('@/views/forms/FormLayouts.vue'),
+          meta: {
+            breadcrumb: [
+              { title: 'Home', url: '/' },
+              { title: 'Forms' },
+              { title: 'Form Layouts', active: true }
+            ],
+            pageTitle: 'Form Layouts',
+            rule: 'editor'
+          }
+        },
+        {
+          path: '/forms/form-wizard',
+          name: 'extra-component-form-wizard',
+          component: () => import('@/views/forms/form-wizard/FormWizard.vue'),
+          meta: {
+            breadcrumb: [
+              { title: 'Home', url: '/' },
+              { title: 'Extra Components' },
+              { title: 'Form Wizard', active: true }
+            ],
+            pageTitle: 'Form Wizard',
+            rule: 'editor'
+          }
+        },
+        {
+          path: '/forms/form-validation',
+          name: 'extra-component-form-validation',
+          component: () => import('@/views/forms/form-validation/FormValidation.vue'),
+          meta: {
+            breadcrumb: [
+              { title: 'Home', url: '/' },
+              { title: 'Extra Components' },
+              { title: 'Form Validation', active: true }
+            ],
+            pageTitle: 'Form Validation',
+            rule: 'editor'
+          }
+        },
+        {
+          path: '/forms/form-input-group',
+          name: 'extra-component-form-input-group',
+          component: () => import('@/views/forms/form-input-group/FormInputGroup.vue'),
+          meta: {
+            breadcrumb: [
+              { title: 'Home', url: '/' },
+              { title: 'Extra Components' },
+              { title: 'Form Input Group', active: true }
+            ],
+            pageTitle: 'Form Input Group',
+            rule: 'editor'
+          }
+        },
+
         // =============================================================================
         // Pages Routes
         // =============================================================================
@@ -750,7 +1155,48 @@ const router = new Router({
         // =============================================================================
         // CHARTS & MAPS
         // =============================================================================
-        
+        {
+          path: '/charts-and-maps/charts/apex-charts',
+          name: 'extra-component-charts-apex-charts',
+          component: () => import('@/views/charts-and-maps/charts/apex-charts/ApexCharts.vue'),
+          meta: {
+            breadcrumb: [
+              { title: 'Home', url: '/' },
+              { title: 'Charts & Maps' },
+              { title: 'Apex Charts', active: true }
+            ],
+            pageTitle: 'Apex Charts',
+            rule: 'editor'
+          }
+        },
+        {
+          path: '/charts-and-maps/charts/chartjs',
+          name: 'extra-component-charts-chartjs',
+          component: () => import('@/views/charts-and-maps/charts/chartjs/Chartjs.vue'),
+          meta: {
+            breadcrumb: [
+              { title: 'Home', url: '/' },
+              { title: 'Charts & Maps' },
+              { title: 'chartjs', active: true }
+            ],
+            pageTitle: 'chartjs',
+            rule: 'editor'
+          }
+        },
+        {
+          path: '/charts-and-maps/charts/echarts',
+          name: 'extra-component-charts-echarts',
+          component: () => import('@/views/charts-and-maps/charts/echarts/Echarts.vue'),
+          meta: {
+            breadcrumb: [
+              { title: 'Home', url: '/' },
+              { title: 'Charts & Maps' },
+              { title: 'echarts', active: true }
+            ],
+            pageTitle: 'echarts',
+            rule: 'editor'
+          }
+        },
         {
           path: '/charts-and-maps/maps/google-map',
           name: 'extra-component-maps-google-map',
